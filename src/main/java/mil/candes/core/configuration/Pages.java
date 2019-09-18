@@ -4,5 +4,8 @@ public class Pages {
 	public static String HOME = "index";
 	
 	//CCIG
-	public static String ccigIndex = "/ccig/mm/index";
+	private static String ccigRoot = "/ccig";
+	private static String ccigMM = "/mm";
+	public static String ccigIndex = ccigRoot+ccigMM+"/index";
+	public static String ccigCargarMM = ccigRoot+ccigMM+"/cargarMM";
 }

@@ -2,11 +2,25 @@ package mil.candes.core.model;
 
 
 
-public class Promotor {
-
+public class Destino {
 	private long id;
+
 	private String descripcion;
+
 	private String correo;
+
+	
+	public Destino() {
+
+	}
+	
+
+	public Destino(long id, String descripcion, String correo) {
+
+		this.id = id;
+		this.descripcion = descripcion;
+		this.correo = correo;
+	}
 
 	public long getId() {
 		return id;
@@ -32,12 +46,4 @@ public class Promotor {
 		this.correo = correo;
 	}
 
-	public Promotor(long id, String descripcion, String correo) {
-		this.id = id;
-		this.descripcion = descripcion;
-		this.correo = correo;
-	}
-
-	public Promotor() {
-	}
 }
