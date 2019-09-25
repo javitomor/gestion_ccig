@@ -3,8 +3,10 @@ package mil.candes.core.controller;
 import java.io.IOException;
 import org.apache.commons.logging.Log;
 import org.json.JSONException;
-
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
@@ -15,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import mil.candes.core.configuration.Routes;
 import mil.candes.core.configuration.Tools;
 import mil.candes.core.model.Destino;
+import mil.candes.core.model.Mm;
 import mil.candes.core.model.Precedencia;
 import mil.candes.core.model.Promotor;
 import mil.candes.core.model.Seguridad;
@@ -23,6 +26,9 @@ import mil.candes.core.model.Seguridad;
 public class ClienteRest {
 
 	private Log logger = Tools.getLog(CcigController.class);
+
+	public ClienteRest() {
+	}
 
 	private boolean validarRespuetaOk(ResponseEntity<String> response) {
 		return response.getStatusCode() == HttpStatus.OK ? true : false;
@@ -98,6 +104,14 @@ public class ClienteRest {
 		logger.error("No se pudo cargar los datos de SEGURIDADES");
 		return null;
 
+	}
+	
+	public ResponseEntity<String> putMM(Mm mensaje) throws Exception{
+		RestTemplate restTemplate = new RestTemplate();
+		String mensajeJson = new ObjectMapper().writeValueAsString(mensaje);
+		ResponseEntity<String> responseJson = restTemplate.postForEntity(Routes.API_GUARDAR_MM,mensajeJson, String.class);
+		return responseJson;
+//		return responseJson.getStatusCode().toString();
 	}
 
 }
