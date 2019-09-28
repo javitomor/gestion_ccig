@@ -3,10 +3,7 @@ package mil.candes.core.controller;
 import java.io.IOException;
 import org.apache.commons.logging.Log;
 import org.json.JSONException;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
@@ -106,12 +103,12 @@ public class ClienteRest {
 
 	}
 	
-	public ResponseEntity<String> putMM(Mm mensaje) throws Exception{
+	public ResponseEntity<String> guardarMM(Mm mensaje) throws Exception{
+		
 		RestTemplate restTemplate = new RestTemplate();
 		String mensajeJson = new ObjectMapper().writeValueAsString(mensaje);
 		ResponseEntity<String> responseJson = restTemplate.postForEntity(Routes.API_GUARDAR_MM,mensajeJson, String.class);
 		return responseJson;
-//		return responseJson.getStatusCode().toString();
 	}
 
 }

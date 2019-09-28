@@ -1,19 +1,18 @@
 package mil.candes.core.controller;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.json.JSONException;
+//import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import mil.candes.core.configuration.Pages;
-import mil.candes.core.configuration.Tools;
+//import mil.candes.core.configuration.Tools;
 import mil.candes.core.model.Destino;
 import mil.candes.core.model.Mm;
 import mil.candes.core.model.Precedencia;
@@ -27,7 +26,7 @@ import mil.candes.core.repository.SeguridadRepository;
 @Controller
 public class CcigController {
 
-	private Log logger = Tools.getLog(CcigController.class);
+//	private Log logger = Tools.getLog(CcigController.class);
 
 	@Autowired
 	DestinoRepository destinoRepository;
@@ -119,19 +118,16 @@ public class CcigController {
 	}
 
 	public ModelAndView mostrarMM() {
-		// model.addAttribute("mm", getMms());
 		return new ModelAndView();
 	}
-
-	public ModelAndView guardarMM(Mm mensajeMilitar) {
-
-		System.out.println(mensajeMilitar.getClass());
-
-		return new ModelAndView(Pages.ccigCargarMM);
+	
+	public String guardarMM(Mm mensaje) throws Exception {
+		ResponseEntity<String> respuesta =api.guardarMM(mensaje); 
+		if(respuesta.getStatusCode() == HttpStatus.CREATED) {
+			return Pages.ccigCargarExitosa;
+		}
+		return respuesta.getBody();
 	}
 	
-	public String putMM(Mm mensaje) throws Exception {
-		ResponseEntity<String> respuesta =api.putMM(mensaje); 
-		return "ok";
-	}
+	
 }

@@ -20,4 +20,5 @@ public class Routes {
 	public final static String cargarMM = mm + "/cargarmm";
 	public final static String obtenerMM = mm + "/obtenermm";
 	public final static String guardarMM = mm + "/guardarmm2";
+	public final static String carga_exitosa = mm + "/display";
 }
