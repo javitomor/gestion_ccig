@@ -2,14 +2,17 @@
 <html lang="es" dir="ltr">
 
 <head>
-<link th:href="@{/css/bootstrap.css}" rel="stylesheet" href="../../../static/css/bootstrap.css" />
-<link th:href="@{/css/select2.css}" rel="stylesheet" href="../../../static/css/select2.css" />
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet"
+	href="../../../static/css/bootstrap.css" />
+<link th:href="@{/css/select2.css}" rel="stylesheet"
+	href="../../../static/css/select2.css" />
 
 <script th:src="@{/js/jquery.js}" src="../../../static/js/jquery.js"></script>
 <script th:src="@{/js/bootstrap.js}"
 	src="../../../static/js/bootstrap.js"></script>
 <script th:src="@{/js/loadMenu.js}" src="../../../static/js/loadMenu.js"></script>
-<script th:src="@{/js/select2.full.js}" src="../../../static/js/select2.full.js"></script>
+<script th:src="@{/js/select2.full.js}"
+	src="../../../static/js/select2.full.js"></script>
 <script th:src="@{/js/scripts.js}" src="../../../static/js/scripts.js"></script>
 <meta charset="utf-8">
 <title>Carga MM</title>
@@ -19,21 +22,12 @@
 	<nav>
 		<div class="row">
 			<div class="col-2">
-				<div class="nav flex-column nav-pills" id="v-pills-tab"
-					role="tablist" aria-orientation="vertical">
-					<a class="nav-link" onclick="cargarMenu('menu')"
-						id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
-						role="tab" aria-controls="v-pills-home" aria-selected="false">Home</a>
-					<a class="nav-link active" onclick="cargarMenu('ccig')"
-						id="v-pills-ccig-tab" data-toggle="pill" href="#v-pills-ccig"
-						role="tab" aria-controls="v-pills-ccig" aria-selected="true">CCIG</a>
-					<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill"
-						href="#v-pills-messages" role="tab"
-						aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-					<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill"
-						href="#v-pills-settings" role="tab"
-						aria-controls="v-pills-settings" aria-selected="false">Settings</a>
-				</div>
+				<ul class="nav flex-column nav-pills">
+					<li class="nav-item"><a class="nav-link"
+						href="/home/ccig/mm/index" th:href="@{/home/ccig/mm/index}">Inicio</a></li>
+					<li><a class="nav-link active" href="/home/ccig/mm/cargarmm"
+						th:href="@{/home/ccig/mm/cargarmm}">Cargar MM</a></li>
+				</ul>
 			</div>
 			<div class="col-10">
 				<div class="tab-content" id="v-pills-tabContent">
@@ -43,17 +37,19 @@
 						role="tabpanel" aria-labelledby="v-pills-ccig-tab">
 						<section id="secFormularioCargaMM">
 							<h1>Cargar MM</h1>
-							<form th:action = "@{/home/ccig/mm/guardarmm2}" method = "post" th:object="${mensajeMilitar}">
+							<form th:action="@{/home/ccig/mm/guardarmm}" method="post"
+								enctype="multipart/form-data" th:object="${mensajeMilitar}">
 								<div class="col-sm-12">
 									<div class="form-group row">
 										<div class="col">
 											<label class="col-sm-4 col-form-label">PRECEDENCIA</label>
 											<div class="col-sm-12">
 												<!-- <input type="text" class="form-control" id="inputProcedencia" placeholder="PROCEDENCIA"> -->
-												<select th:field="*{precedencia}" id="selectProcedencia"  class="custom-select">
+												<select th:field="*{precedencia}" id="selectProcedencia"
+													class="custom-select">
 													<option selected disabled value=0>Precedencia..</option>
 													<option th:each="precedenciaDato : ${precedencias}"
-														th:value="${precedenciaDato.id}" 
+														th:value="${precedenciaDato.id}"
 														th:text="${precedenciaDato.descripcion}"></option>
 												</select>
 											</div>
@@ -62,7 +58,8 @@
 											<label class="col-sm-4 col-form-label">SEGURIDAD</label>
 											<div class="col-sm-12">
 												<!-- <input type="text" class="form-control" id="inputProcedencia" placeholder="PROCEDENCIA"> -->
-												<select th:field="*{seguridad}" id="selectSeguridad" class="custom-select">
+												<select th:field="*{seguridad}" id="selectSeguridad"
+													class="custom-select">
 													<option selected disabled value=0>Seguridad..</option>
 													<option th:each="seguridadDato : ${seguridades}"
 														th:value="${seguridadDato.id}"
@@ -73,7 +70,8 @@
 										<div class="col">
 											<label class="col-sm-4 col-form-label">GFH</label>
 											<div class="col-sm-12">
-												<input th:field="*{gfh}" type="text" class="form-control" id="inputGfh"
+												<input th:field="*{grupoFechaHora}" type="text"
+													class="form-control" id="inputGfh"
 													placeholder="Grupo Fecha Hora">
 											</div>
 										</div>
@@ -82,31 +80,35 @@
 										<div class="col">
 											<label class="col-sm-4 col-form-label">NR</label>
 											<div class="col-sm-12">
-												<input th:field="*{nr}" type="text" class="form-control" id="inputNr"
+												<input th:field="*{numeroRegistro}" type="text"
+													class="form-control" id="inputNr"
 													placeholder="Número de Registro">
 											</div>
 										</div>
 										<div class="col">
 											<label class="col-sm-4 col-form-label">NC</label>
 											<div class="col-sm-12">
-												<input th:field="*{nc}" type="text" class="form-control" id="inputNc"
+												<input th:field="*{numeroControl}" type="text"
+													class="form-control" id="inputNc"
 													placeholder="Número de Control">
 											</div>
 										</div>
 										<div class="col">
 											<label class="col-sm-4 col-form-label">FOLIO</label>
 											<div class="col-sm-12">
-												<input th:field="*{folio}" type="text" class="form-control" id="inputFolio"
+												<input th:field="*{numeroFolio}" type="text"
+													class="form-control" id="inputFolio"
 													placeholder="Número de Folio">
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="col">
-											<label class="col-sm-4 col-form-label" >PROMOTOR</label>
+											<label class="col-sm-4 col-form-label">PROMOTOR</label>
 											<div class="col-sm-12">
-												
-												<select th:field="*{promotor}" class="custom-select" id="selectPromotor" >
+
+												<select th:field="*{promotor}" class="custom-select"
+													id="selectPromotor">
 													<option selected disabled value=0>Promotor..</option>
 													<option th:each="promotorDato : ${promotores}"
 														th:value="${promotorDato.id}"
@@ -117,9 +119,11 @@
 										<div class="col">
 											<label class="col-sm-4 col-form-label">EJECUTIVOS</label>
 											<div class="col-sm-12">
-												
-												<select th:field="*{ejecutivos}" id="selectEjecutivo" class="form-control js-example-basic-multiple" name="ejecutivos[]" multiple="multiple">
-												<option disabled value=0>Ejecutivos..</option>
+
+												<select th:field="*{ejecutivo}" id="selectEjecutivo"
+													class="form-control js-example-basic-multiple"
+													name="ejecutivos[]" multiple="multiple">
+													<option disabled value=0>Ejecutivos..</option>
 													<option th:each="ejecutivoDato : ${destinos}"
 														th:value="${ejecutivoDato.id}"
 														th:text="${ejecutivoDato.descripcion}"></option>
@@ -130,8 +134,10 @@
 										<div class="col">
 											<label class="col-sm-4 col-form-label">INFORMATIVOS</label>
 											<div class="col-sm-12">
-												
-												<select th:field="*{informativos}" id="selectInvormativo" class="form-control js-example-basic-multiple" name="informativos[]" multiple="multiple">
+
+												<select th:field="*{informativo}" id="selectInvormativo"
+													class="form-control js-example-basic-multiple"
+													name="informativos[]" multiple="multiple">
 													<option disabled value=0>Informativos..</option>
 													<option th:each="informativoDato : ${destinos}"
 														th:value="${informativoDato.id}"
@@ -146,9 +152,9 @@
 									<div class="form-group row">
 										<div class="col">
 											<label class="col-sm-4 col-form-label">TEXTO</label>
-											<div  class="col-sm-12">
-												<textarea th:field="*{texto}" class="form-control" id="textTexto"
-													placeholder="Texto del mensaje"></textarea>
+											<div class="col-sm-12">
+												<textarea th:field="*{texto}" class="form-control"
+													id="textTexto" placeholder="Texto del mensaje"></textarea>
 											</div>
 										</div>
 									</div>
@@ -157,9 +163,9 @@
 									<div class="form-group row">
 										<div class="col">
 											<div class="col-sm-12">
-												<label class="custom-file-label" for="fileMM">Seleccionar
-													Archivo</label> <input th:field="*{urlPdf}" type="file" class="custom-file-input"
-													id="fileMM" lang="es">
+												<label class="custom-file-label" for="archivopdf">Seleccionar
+													Archivo</label> <input name="archivopdf" type="file"
+													class="custom-file-input" id="archivopdf" lang="es">
 											</div>
 										</div>
 									</div>

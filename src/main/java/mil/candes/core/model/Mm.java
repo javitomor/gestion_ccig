@@ -1,26 +1,28 @@
 package mil.candes.core.model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+
 
 
 public class Mm {
 
 	private long id;
-	private long nr;
-	private long nc;
-	private long folio;
-	private String gfh;
+	private long numeroRegistro;
+	private long numeroControl;
+	private long numeroFolio;
+	private String grupoFechaHora;
 	private String texto;
-	private String urlPdf;
-	private LocalDate fecha;
+	private String archivo;
+	private LocalDate fechaAlta;
+//	private MultipartFile archivo;
 	
 	private long precedencia;
 	private long seguridad;
 	private long promotor;
-	private long[] ejecutivos;
-	private long[] informativos;
+	private long[] ejecutivo;
+	private long[] informativo;
 	
 	public long getId() {
 		return id;
@@ -28,29 +30,29 @@ public class Mm {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public long getNr() {
-		return nr;
+	public long getNumeroRegistro() {
+		return numeroRegistro;
 	}
-	public void setNr(long nr) {
-		this.nr = nr;
+	public void setNumeroRegistro(long nr) {
+		this.numeroRegistro = nr;
 	}
-	public long getNc() {
-		return nc;
+	public long getNumeroControl() {
+		return numeroControl;
 	}
-	public void setNc(long nc) {
-		this.nc = nc;
+	public void setNumeroControl(long nc) {
+		this.numeroControl = nc;
 	}
-	public long getFolio() {
-		return folio;
+	public long getNumeroFolio() {
+		return numeroFolio;
 	}
-	public void setFolio(long folio) {
-		this.folio = folio;
+	public void setNumeroFolio(long folio) {
+		this.numeroFolio = folio;
 	}
-	public String getGfh() {
-		return gfh;
+	public String getGrupoFechaHora() {
+		return grupoFechaHora;
 	}
-	public void setGfh(String gfh) {
-		this.gfh = gfh;
+	public void setGrupoFechaHora(String gfh) {
+		this.grupoFechaHora = gfh;
 	}
 	public String getTexto() {
 		return texto;
@@ -58,17 +60,17 @@ public class Mm {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-	public String getUrlPdf() {
-		return urlPdf;
+	public String getArchivo() {
+		return archivo;
 	}
-	public void setUrlPdf(String urlPdf) {
-		this.urlPdf = urlPdf;
+	public void setArchivo(String urlPdf) {
+		this.archivo = urlPdf;
 	}
-	public LocalDate getFecha() {
-		return fecha;
+	public LocalDate getFechaAlta() {
+		return fechaAlta;
 	}
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
+	public void setFechaAlta(LocalDate fecha) {
+		this.fechaAlta = fecha;
 	}
 	public long getPrecedencia() {
 		return precedencia;
@@ -88,46 +90,50 @@ public class Mm {
 	public void setPromotor(long promotor) {
 		this.promotor = promotor;
 	}
-	public long[] getEjecutivos() {
-		return ejecutivos;
+	public long[] getEjecutivo() {
+		return ejecutivo;
 	}
-	public void setEjecutivos(long[] ejecutivos) {
-		this.ejecutivos = ejecutivos;
+	public void setEjecutivo(long[] ejecutivos) {
+		this.ejecutivo = ejecutivos;
 	}
-	public long[] getInformativos() {
-		return informativos;
+	public long[] getInformativo() {
+		return informativo;
 	}
-	public void setInformativos(long[] informativos) {
-		this.informativos = informativos;
+	public void setInformativo(long[] informativos) {
+		this.informativo = informativos;
 	}
+	
+//	public MultipartFile getArchivo() {
+//		return archivo;
+//	}
+//	public void setArchivo(MultipartFile archivo) {
+//		this.archivo = archivo;
+//	}
+	
 	public Mm(long id, long nr, long nc, long folio, String gfh, String texto, String urlPdf, LocalDate fecha,
-			long precedencia, long seguridad, long promotor, long[] ejecutivos, long[] informativos) {
+//			MultipartFile archivo, 
+			long precedencia, long seguridad, long promotor, long[] ejecutivos,
+			long[] informativos) {
 		this.id = id;
-		this.nr = nr;
-		this.nc = nc;
-		this.folio = folio;
-		this.gfh = gfh;
+		this.numeroRegistro = nr;
+		this.numeroControl = nc;
+		this.numeroFolio = folio;
+		this.grupoFechaHora = gfh;
 		this.texto = texto;
-		this.urlPdf = urlPdf;
-		this.fecha = fecha;
+		this.archivo = urlPdf;
+		this.fechaAlta = fecha;
+//		this.archivo = archivo;
 		this.precedencia = precedencia;
 		this.seguridad = seguridad;
 		this.promotor = promotor;
-		this.ejecutivos = ejecutivos;
-		this.informativos = informativos;
-	}
-	
-	@Override
-	public String toString() {
-		return "Mm [id=" + id + ", nr=" + nr + ", nc=" + nc + ", folio=" + folio + ", gfh=" + gfh + ", texto=" + texto
-				+ ", urlPdf=" + urlPdf + ", fecha=" + fecha + ", precedencia=" + precedencia + ", seguridad="
-				+ seguridad + ", promotor=" + promotor + ", ejecutivos=" + Arrays.toString(ejecutivos)
-				+ ", informativos=" + Arrays.toString(informativos) + "]";
+		this.ejecutivo = ejecutivos;
+		this.informativo = informativos;
 	}
 	public Mm() {
 	}
 	
-		
+
+
 	
 	
 }

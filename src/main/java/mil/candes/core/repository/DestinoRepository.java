@@ -24,4 +24,8 @@ public class DestinoRepository {
 		}
 		return null;
 	}
+	
+	public Destino getDestino(String descripcion) throws JSONException {
+		return api.getDestino(descripcion);
+	}
 }
